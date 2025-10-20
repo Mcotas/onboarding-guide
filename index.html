@@ -78,6 +78,29 @@
       .video-card{page-break-inside:avoid}
       img{page-break-inside:avoid}
     }
+    /* esconder a barra inferior */
+.top-nav{display:none !important}
+
+/* links sem sublinhado nem outline azul */
+a{text-decoration:none}
+a:focus,a:focus-visible{outline:none}
+
+/* reforçar os 3 botões da capa */
+.cover .meta{gap:16px;opacity:1}
+.cover .meta .meta-item{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:14px 28px;border-radius:28px;
+  background:linear-gradient(135deg,#2a2a2a 0%,#3a3a3a 100%);
+  border:1px solid #4b4b4b;color:#e5e7eb;font-weight:700;letter-spacing:.2px;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.cover .meta .meta-item:hover{
+  transform:translateY(-1px);
+  border-color:#EAB308;
+  box-shadow:0 10px 24px rgba(234,179,8,.18);
+}
+
   </style>
 </head>
 <body>
