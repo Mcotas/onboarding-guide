@@ -9,9 +9,12 @@
 
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:'Inter',sans-serif;line-height:1.6;color:#e5e7eb;background:#0f0f0f}
-    a{color:inherit}
+    a{color:inherit;text-decoration:none}
+    a:focus,a:focus-visible{outline:none}
 
     .document{max-width:210mm;margin:0 auto;background:#1a1a1a;box-shadow:0 0 40px rgba(0,0,0,.5)}
+    @media (min-width:900px){ .document{ max-width:1100px; } }
+
     .cover{background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 50%,#1a1a1a 100%);color:#fff;padding:80px 60px 100px;position:relative;overflow:hidden}
     .cover::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:radial-gradient(circle at 50% 0%,rgba(234,179,8,.15),transparent 70%)}
     .logo-container{display:flex;align-items:center;gap:15px;margin-bottom:60px;position:relative;z-index:2}
@@ -21,18 +24,23 @@
     .cover-content{position:relative;z-index:2;text-align:center;margin-top:40px}
     .cover h1{font-size:48px;font-weight:800;margin-bottom:20px;letter-spacing:-1px;background:linear-gradient(135deg,#fff 0%,#EAB308 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .cover .subtitle{font-size:20px;opacity:.9;font-weight:400;margin-bottom:30px;color:#e5e7eb}
-    .cover .meta{font-size:14px;opacity:.7;margin-top:40px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-    .meta-item{background:rgba(255,255,255,.1);padding:8px 20px;border-radius:20px;backdrop-filter:blur(10px)}
-    .top-nav{background:#111827;border-top:1px solid #2f2f2f;border-bottom:1px solid #2f2f2f}
-    .top-nav .inner{max-width:210mm;margin:0 auto;padding:12px 20px;display:flex;gap:18px;justify-content:center}
-    .top-nav a{color:#e5e7eb;text-decoration:none;font-weight:600}
-    .top-nav a:hover{color:#fbbf24}
+    .cover .meta{font-size:14px;margin-top:40px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+    .cover .meta .meta-item{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:14px 28px;border-radius:28px;background:linear-gradient(135deg,#2a2a2a 0%,#3a3a3a 100%);
+      border:1px solid #4b4b4b;color:#e5e7eb;font-weight:700;letter-spacing:.2px;
+      box-shadow:0 6px 18px rgba(0,0,0,.35);transition:transform .15s, box-shadow .15s, border-color .15s;
+    }
+    .cover .meta .meta-item:hover{transform:translateY(-1px);border-color:#EAB308;box-shadow:0 10px 24px rgba(234,179,8,.18)}
 
     .section-header{background:linear-gradient(135deg,#EAB308 0%,#CA8A04 100%);color:#fff;padding:40px 60px;margin-top:0;position:relative;overflow:hidden}
     .section-header::after{content:'';position:absolute;top:0;right:0;width:300px;height:100%;background:radial-gradient(circle at 100% 50%,rgba(255,255,255,.1),transparent 70%)}
     .section-header h2{font-size:32px;font-weight:700;margin-bottom:12px;position:relative;z-index:2}
     .section-header p{font-size:16px;opacity:.95;line-height:1.6;position:relative;z-index:2}
+
     .content{padding:50px 60px}
+
+    .intro{padding:30px 60px 0;color:#d1d5db}
 
     .video-card{background:#262626;border:1px solid #404040;border-radius:16px;padding:35px;margin-bottom:30px;transition:.3s all;box-shadow:0 4px 12px rgba(0,0,0,.3);position:relative}
     .video-card::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(180deg,#EAB308,#CA8A04);border-radius:16px 0 0 16px;opacity:0;transition:opacity .3s}
@@ -41,16 +49,19 @@
     .video-number{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a1a,#2d2d2d);color:#EAB308;width:45px;height:45px;border-radius:50%;font-weight:700;font-size:20px;margin-bottom:18px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
     .video-card h3{font-size:22px;font-weight:700;color:#fff;margin-bottom:16px;line-height:1.3}
     .video-card p{color:#d1d5db;font-size:15px;line-height:1.8;margin-bottom:24px}
-    .video-link{display:inline-flex;align-items:center;background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;transition:.3s all;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+    .video-link{display:inline-flex;align-items:center;background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);color:#fff;padding:14px 28px;border-radius:10px;font-weight:600;font-size:14px;transition:.3s all;box-shadow:0 4px 12px rgba(0,0,0,.15)}
     .video-link:hover{background:linear-gradient(135deg,#EAB308 0%,#CA8A04 100%);transform:translateY(-2px);box-shadow:0 6px 20px rgba(234,179,8,.3)}
     .video-link::before{content:'▶';margin-right:10px;font-size:12px}
+
+    .embed{margin:12px -10px}
+    .video-card iframe,.practice-card iframe{width:100%;height:auto;aspect-ratio:16/9;display:block;border:0}
 
     .info-section{background:linear-gradient(135deg,#2d2d2d 0%,#1f1f1f 100%);border-left:5px solid #EAB308;padding:30px 35px;margin:40px 0;border-radius:0 12px 12px 0;box-shadow:0 4px 12px rgba(0,0,0,.3)}
     .info-section h3{color:#EAB308;font-size:22px;font-weight:700;margin-bottom:18px}
     .info-section p{color:#d1d5db;font-size:15px;line-height:1.8}
     .info-section ul{margin:18px 0 0 25px;color:#d1d5db}
     .info-section li{margin:10px 0;line-height:1.7}
-    .info-section a{color:#EAB308;font-weight:600;text-decoration:none;border-bottom:2px solid #EAB308;transition:.3s all}
+    .info-section a{color:#EAB308;font-weight:600;border-bottom:2px solid #EAB308;transition:.3s all}
     .info-section a:hover{color:#fbbf24;border-bottom-color:#fbbf24}
 
     .practice-section{background:linear-gradient(135deg,#1f2d25 0%,#1a2820 100%);border-left:5px solid #10b981;padding:30px 35px;margin:40px 0;border-radius:0 12px 12px 0;box-shadow:0 4px 12px rgba(0,0,0,.3)}
@@ -78,29 +89,6 @@
       .video-card{page-break-inside:avoid}
       img{page-break-inside:avoid}
     }
-    /* esconder a barra inferior */
-.top-nav{display:none !important}
-
-/* links sem sublinhado nem outline azul */
-a{text-decoration:none}
-a:focus,a:focus-visible{outline:none}
-
-/* reforçar os 3 botões da capa */
-.cover .meta{gap:16px;opacity:1}
-.cover .meta .meta-item{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:14px 28px;border-radius:28px;
-  background:linear-gradient(135deg,#2a2a2a 0%,#3a3a3a 100%);
-  border:1px solid #4b4b4b;color:#e5e7eb;font-weight:700;letter-spacing:.2px;
-  box-shadow:0 6px 18px rgba(0,0,0,.35);
-  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-}
-.cover .meta .meta-item:hover{
-  transform:translateY(-1px);
-  border-color:#EAB308;
-  box-shadow:0 10px 24px rgba(234,179,8,.18);
-}
-
   </style>
 </head>
 <body>
@@ -126,26 +114,22 @@ a:focus,a:focus-visible{outline:none}
       </div>
     </div>
 
-    <!-- Sticky nav -->
-    <nav class="top-nav" aria-label="Section navigation">
-      <div class="inner">
-        <a href="#watch">Watch</a>
-        <a href="#review">Review</a>
-        <a href="#practice">Practice</a>
-      </div>
-    </nav>
+    <!-- Intro -->
+    <div class="intro">
+      <p>This guide helps any team member quickly grasp poker fundamentals — not just rules, but the logic behind decisions that power FlopHero. In under an hour you’ll be able to play, discuss hands, and understand team vocabulary.</p>
+    </div>
 
     <!-- Tutorials -->
     <div id="watch" class="section-header">
       <h2>📺 Poker Tutorials (Watch)</h2>
-      <p>YouTube playlist (~1 hour) explaining rules, hand rankings, betting and actions, core poker terms and positions, basic math and GTO principles, and a short introduction to Omaha (PLO).</p>
+      <p>Learn the core of Texas Hold’em with short videos focused on what matters most.</p>
     </div>
 
     <div class="content">
       <div class="video-card">
         <div class="video-number">1</div>
         <h3>How to Play Poker for Beginners | PokerStars Learn</h3>
-        <p>This video introduces the foundations of Texas Hold'em from deal to showdown. Actions, rounds, and how to win.</p>
+        <p>Foundations from deal to showdown. Actions, rounds, and win conditions.</p>
         <a href="https://www.youtube.com/watch?v=pSRGErzzIo4&list=PLvZlja2OPoK--JWzeKF4MJfu1K5xoIZp9&index=1"
            class="video-link" target="_blank" rel="noopener">Watch on YouTube</a>
       </div>
@@ -174,7 +158,7 @@ a:focus,a:focus-visible{outline:none}
       <div class="video-card">
         <div class="video-number">4</div>
         <h3>Essential Poker Terms | PokerStars Learn</h3>
-        <p>Key terms: blinds, position, pot, stack, showdown, etc.</p>
+        <p>Key terms: blinds, position, pot, stack, showdown, and more.</p>
         <a href="https://www.youtube.com/watch?v=iN4_p4WndxI&list=PLvZlja2OPoK--JWzeKF4MJfu1K5xoIZp9&index=6"
            class="video-link" target="_blank" rel="noopener">Watch on YouTube</a>
       </div>
@@ -205,6 +189,10 @@ a:focus,a:focus-visible{outline:none}
         <a href="https://www.youtube.com/watch?v=ouAa2a-ZO9s&list=PLvZlja2OPoK--JWzeKF4MJfu1K5xoIZp9&index=13"
            class="video-link" target="_blank" rel="noopener">Watch on YouTube</a>
       </div>
+
+      <div class="highlight-box">
+        <p><strong>🧠 Tip:</strong> While watching, pause before key actions and guess the play. It trains fast decision-making.</p>
+      </div>
     </div>
 
     <div class="divider"></div>
@@ -212,7 +200,7 @@ a:focus,a:focus-visible{outline:none}
     <!-- Review -->
     <div id="review" class="section-header" style="background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%)">
       <h2>🎯 Review (Flashcards)</h2>
-      <p>Study with our interactive flashcards to reinforce learning.</p>
+      <p>Repetition with spaced practice locks concepts long-term.</p>
     </div>
 
     <div class="content">
@@ -224,7 +212,7 @@ a:focus,a:focus-visible{outline:none}
         </p>
 
         <div class="highlight-box">
-          <p><strong>💡 Pro Tip:</strong> Create a free Brainscape account to track your progress and study with spaced repetition.</p>
+          <p><strong>💡 Pro Tip:</strong> Create a free Brainscape account to track progress and use spaced repetition.</p>
         </div>
 
         <h3 style="margin-top:30px;">Recommended Study Order:</h3>
@@ -244,7 +232,7 @@ a:focus,a:focus-visible{outline:none}
     <!-- Practice -->
     <div id="practice" class="section-header" style="background:linear-gradient(135deg,#10b981 0%,#059669 100%)">
       <h2>🎮 Practice (Play)</h2>
-      <p>Use free apps and platforms to practice what you've learned.</p>
+      <p>Nothing beats playing hands. Apply what you learned in a safe environment.</p>
     </div>
 
     <div class="content">
@@ -255,17 +243,14 @@ a:focus,a:focus-visible{outline:none}
           <h4>1. PokerNow.club</h4>
           <p>Play private games with teammates directly in your browser — no installation required. Create a table, share the link, and experience real poker flow.</p>
 
-          <div style="margin:20px 0;text-align:center;">
-            <!-- Privacy-enhanced, sandboxed embed -->
+          <div class="embed">
             <iframe
-              width="560" height="315"
               src="https://www.youtube-nocookie.com/embed/3rdy0s4Y6M8?modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&controls=1"
               title="PokerNow.club Tutorial"
-              frameborder="0"
               allow="autoplay; encrypted-media; picture-in-picture"
               sandbox="allow-same-origin allow-scripts allow-presentation"
               referrerpolicy="no-referrer"
-              style="border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.3);max-width:100%">
+              allowfullscreen>
             </iframe>
           </div>
 
@@ -279,9 +264,13 @@ a:focus,a:focus-visible{outline:none}
         </div>
 
         <div class="highlight-box" style="background:linear-gradient(135deg,#1f2d25 0%,#1a2820 100%);border-color:#10b981;">
-          <p style="color:#6ee7b7;"><strong>💚 Learning Tip:</strong> Start with PokerNow.club with teammates, then try Zynga for variety. Focus on fundamentals over play-money results.</p>
+          <p style="color:#6ee7b7;"><strong>💚 Learning Tip:</strong> Start on PokerNow with teammates, then test vs. broader styles on Zynga. Focus on fundamentals, not play-money results.</p>
         </div>
       </div>
+    </div>
+
+    <div class="highlight-box" style="border-color:#EAB308;">
+      <p><strong>🚀 Next step:</strong> After this guide, explore FlopHero Replayer and GTO reports to link theory with practice.</p>
     </div>
 
     <!-- Footer -->
