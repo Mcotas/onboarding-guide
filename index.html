@@ -8,11 +8,16 @@
 
   <!-- Meta -->
   <meta name="description" content="FlopHero Poker Onboarding: watch, review, and practice to learn poker fundamentals fast.">
+  <link rel="canonical" href="https://flophero.internal/onboarding">
+  <meta name="theme-color" content="#0f0f0f">
+  <meta name="color-scheme" content="dark light">
   <meta property="og:title" content="FlopHero Poker Onboarding Guide">
   <meta property="og:description" content="Learn poker fundamentals fast: watch, review, practice.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="poker_hands.png">
+  <meta property="og:image" content="https://flophero.internal/assets/poker_hands.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preload" as="image" href="FH - Color - On Dark (2).png" imagesizes="44px">
 
   <style>
     :root{
@@ -26,21 +31,26 @@
     }
     html{scroll-behavior:smooth}
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; line-height:1.6; color:#e5e7eb; background:#0f0f0f}
+    body{font-family: ui-sans-serif,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif; line-height:1.6; color:#e5e7eb; background:#0f0f0f}
+
     a{color:inherit;text-decoration:none}
-    a:focus,a:focus-visible{outline:none}
+    a:focus,a:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px}
+
+    /* Skip link */
+    .skip-link{position:absolute;left:-9999px;top:auto}
+    .skip-link:focus{left:16px;top:16px;z-index:9999;background:#fff;color:#111;padding:8px 12px;border-radius:8px}
 
     /* Layout */
-    .document{max-width:1100px;margin:0 auto;background:#1a1a1a;box-shadow:0 0 40px rgba(0,0,0,.5)}
-    @media (max-width:640px){ .document{ box-shadow:none } }
+    main.document{max-width:1100px;margin:0 auto;background:#1a1a1a;box-shadow:0 0 40px rgba(0,0,0,.5)}
+    @media (max-width:640px){ main.document{ box-shadow:none } }
 
-    .cover{background:var(--gradient-dark);color:#fff;padding:48px 20px 72px;position:relative;overflow:hidden}
-    .cover::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:radial-gradient(circle at 50% 0%,rgba(234,179,8,.15),transparent 70%)}
+    header.cover{background:var(--gradient-dark);color:#fff;padding:48px 20px 72px;position:relative;overflow:hidden}
+    header.cover::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:radial-gradient(circle at 50% 0%,rgba(234,179,8,.15),transparent 70%)}
     .cover-inner{max-width:1100px;margin:0 auto}
     .logo-container{display:flex;align-items:center;gap:16px;margin-bottom:28px;position:relative;z-index:2}
     .logo-img{height:44px;width:auto}
     .cover-content{text-align:center}
-    .cover h1{font-size:40px;font-weight:800;margin-bottom:12px;letter-spacing:-.5px;background:linear-gradient(135deg,#fff 0%,var(--color-primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .cover h1{font-size:clamp(28px,4vw,40px);font-weight:800;margin-bottom:12px;letter-spacing:-.5px;background:linear-gradient(135deg,#fff 0%,var(--color-primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .cover .subtitle{font-size:18px;opacity:.9;margin-bottom:18px;color:#e5e7eb}
     .cover .meta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}
     .cover .meta .meta-item{
@@ -53,7 +63,7 @@
 
     .section-header{background:var(--gradient-primary);color:#fff;padding:28px 20px}
     .section-header-inner{max-width:1100px;margin:0 auto}
-    .section-header h2{font-size:26px;font-weight:700;margin-bottom:8px}
+    .section-header h2{font-size:clamp(20px,3vw,26px);font-weight:700;margin-bottom:8px}
     .section-header p{font-size:15px;opacity:.95}
 
     .content{padding:24px 20px;max-width:1100px;margin:0 auto}
@@ -88,33 +98,43 @@
     .image-caption{color:#6b7280;font-size:13px;font-style:italic;margin-top:6px}
     .divider{height:1px;background:linear-gradient(to right,transparent,#404040,transparent);margin:28px 0}
 
-    .footer{background:var(--gradient-dark);color:#9ca3af;padding:22px 20px;text-align:center;font-size:12px}
+    footer.footer{background:var(--gradient-dark);color:#9ca3af;padding:22px 20px;text-align:center;font-size:12px}
     .footer strong{color:var(--color-primary)}
     .highlight-box{background:linear-gradient(135deg,#2d2415 0%,#1f1a0f 100%);border:2px solid var(--color-primary);border-radius:12px;padding:16px;margin:18px 0}
     .highlight-box p{color:#fbbf24;font-size:14px;margin:0}
 
     /* Mobile tweaks */
     @media (max-width:480px){
-      .cover h1{font-size:32px}
       .cover .subtitle{font-size:16px}
     }
 
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      .video-card:hover{transform:none;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+    }
+
     @media print{
-      .document{box-shadow:none}
-      body{background:#fff}
-      .video-card{page-break-inside:avoid}
-      img{page-break-inside:avoid}
+      :root{color-scheme:light}
+      main.document{box-shadow:none;background:#fff}
+      body{background:#fff;color:#111}
+      header.cover,footer.footer{background:#fff;color:#111}
+      .video-card,.practice-card{border-color:#ccc;box-shadow:none}
+      a{color:#000;text-decoration:underline}
+      .video-card,img{page-break-inside:avoid}
     }
   </style>
 </head>
 <body>
-  <div class="document" role="main">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <main id="main" class="document">
 
     <!-- Cover -->
-    <div class="cover">
+    <header class="cover">
       <div class="cover-inner">
         <div class="logo-container">
-          <img class="logo-img" src="FH - Color - On Dark (2).png" alt="FlopHero logo">
+          <img class="logo-img" src="FH - Color - On Dark (2).png" alt="FlopHero logo" width="132" height="44" decoding="async" fetchpriority="high">
         </div>
         <div class="cover-content">
           <h1>Poker Onboarding Guide</h1>
@@ -126,7 +146,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </header>
 
     <!-- Intro -->
     <div class="intro">
@@ -134,89 +154,97 @@
     </div>
 
     <!-- WATCH -->
-    <div id="watch" class="section-header">
+    <section id="watch" class="section-header" aria-labelledby="watch-title">
       <div class="section-header-inner">
-        <h2>📺 Poker Tutorials (Watch)</h2>
+        <h2 id="watch-title"><span aria-hidden="true">📺</span> Poker Tutorials (Watch)</h2>
         <p>Short, focused content to learn Texas Hold'em fundamentals.</p>
       </div>
-    </div>
+    </section>
 
-    <div class="content">
-      <div class="video-card">
+    <section class="content" aria-label="Watch list">
+      <article class="video-card">
         <div class="video-number">1</div>
         <h3>How to Play Poker for Beginners — PokerStars Learn</h3>
         <p>Full hand flow. Basic actions and win conditions.</p>
         <a href="https://www.youtube.com/watch?v=pSRGErzzIo4" class="video-link" target="_blank" rel="noopener">Watch on YouTube</a>
-      </div>
+      </article>
 
-      <div class="video-card">
+      <article class="video-card">
         <div class="video-number">2</div>
         <h3>Poker Hands: Rankings — PokerStars Learn</h3>
         <p>Ranking from High Card to Royal Flush. Ties and kickers.</p>
         <a href="https://www.youtube.com/watch?v=n-MG0gzXwis" class="video-link" target="_blank" rel="noopener">Watch on YouTube</a>
-      </div>
+      </article>
 
       <div class="image-container">
-        <img src="poker_hands.png" loading="lazy" width="1200" height="800" alt="Texas Hold'em hand rankings chart from High Card to Royal Flush" />
+        <img src="poker_hands.png"
+             alt="Texas Hold'em hand rankings chart from High Card to Royal Flush"
+             width="1200" height="800"
+             loading="lazy" decoding="async"
+             sizes="(max-width: 768px) 100vw, 1100px" />
         <p class="image-caption">Reference: hand rankings from weakest to strongest.</p>
       </div>
 
-      <div class="video-card">
+      <article class="video-card">
         <div class="video-number">3</div>
         <h3>How To Bet In Poker — PokerStars Learn</h3>
         <p>Blinds, raises, calls, folds, and positional advantage.</p>
         <a href="https://www.youtube.com/watch?v=ibkt_SLQe4E" class="video-link" target="_blank" rel="noopener">Watch on YouTube</a>
-      </div>
+      </article>
 
-      <div class="video-card">
+      <article class="video-card">
         <div class="video-number">4</div>
         <h3>Essential Poker Terms — PokerStars Learn</h3>
         <p>Key vocabulary to follow the rest of the guide.</p>
         <a href="https://www.youtube.com/watch?v=iN4_p4WndxI" class="video-link" target="_blank" rel="noopener">Watch on YouTube</a>
-      </div>
+      </article>
 
       <div class="image-container">
-        <img src="table_view.png" loading="lazy" width="1200" height="800" alt="Poker table layout showing player positions: Button, Small Blind, Big Blind, and early/middle/late positions" />
+        <img src="table_view.png"
+             alt="Poker table layout with Button, Small Blind, Big Blind and early/middle/late positions"
+             width="1200" height="800"
+             loading="lazy" decoding="async"
+             sizes="(max-width: 768px) 100vw, 1100px" />
         <p class="image-caption">Reference: table positions and strategic importance.</p>
       </div>
 
-      <div class="video-card">
+      <article class="video-card">
         <div class="video-number">5</div>
         <h3>How To Calculate EV: Pot Odds & Equity</h3>
         <p>Pot odds, outs, equity, and quick rules of thumb.</p>
         <a href="https://www.youtube.com/watch?v=PmHc40VgWAc" class="video-link" target="_blank" rel="noopener">Watch on YouTube</a>
-      </div>
+      </article>
 
-      <div class="video-card">
+      <article class="video-card">
         <div class="video-number">6</div>
         <h3>The Fundamentals of GTO Poker</h3>
         <p>Balanced strategy and how tools connect to GTO logic.</p>
         <a href="https://www.youtube.com/watch?v=WQJBmH2KG84" class="video-link" target="_blank" rel="noopener">Watch on YouTube</a>
-      </div>
+      </article>
 
-      <div class="video-card">
+      <article class="video-card">
         <div class="video-number">7</div>
         <h3>How to Play Poker — Omaha Guide</h3>
         <p>Quick intro to PLO. Four hole cards. Use exactly two.</p>
         <a href="https://www.youtube.com/watch?v=ouAa2a-ZO9s" class="video-link" target="_blank" rel="noopener">Watch on YouTube</a>
-      </div>
+      </article>
 
       <div class="highlight-box">
         <p><strong>Tip:</strong> Pause before key actions and guess the play. It builds decision speed.</p>
       </div>
-    </div>
+    </section>
 
     <div class="divider"></div>
 
     <!-- REVIEW -->
-    <div id="review" class="section-header" style="background:var(--gradient-dark)">
+    <section id="review" class="section-header" aria-labelledby="review-title" style="background:var(--gradient-dark)">
       <div class="section-header-inner">
-        <h2>🎯 Review (Flashcards)</h2>
+        <h2 id="review-title"><span aria-hidden="true">🎯</span> Review (Flashcards)</h2>
         <p>Flashcards are short Q&A prompts. They work via active recall and spaced repetition.</p>
       </div>
-    </div>
+    </section>
 
-    <div class="content">
+    <section class="content" aria-label="Review">
       <div class="info-section">
         <h3>How to use</h3>
         <ul>
@@ -240,19 +268,19 @@
           <li><strong>Omaha (PLO)</strong> → variants</li>
         </ul>
       </div>
-    </div>
+    </section>
 
     <div class="divider"></div>
 
     <!-- PRACTICE -->
-    <div id="practice" class="section-header" style="background:linear-gradient(135deg,var(--color-success) 0%,var(--color-success-dark) 100%)">
+    <section id="practice" class="section-header" aria-labelledby="practice-title" style="background:linear-gradient(135deg,var(--color-success) 0%,var(--color-success-dark) 100%)">
       <div class="section-header-inner">
-        <h2>🎮 Practice (Play)</h2>
+        <h2 id="practice-title"><span aria-hidden="true">🎮</span> Practice (Play)</h2>
         <p>Step-by-step to start playing now.</p>
       </div>
-    </div>
+    </section>
 
-    <div class="content">
+    <section class="content" aria-label="Practice">
       <div class="practice-section">
         <h3>Free Practice Platforms</h3>
 
@@ -268,14 +296,17 @@
 
           <!-- Click-to-load for privacy -->
           <div class="embed" id="pokernow">
-            <button aria-label="Load PokerNow tutorial video"
+            <button type="button" aria-label="Load PokerNow tutorial video"
                     style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px;
-                           background:#111 url('table_view.png') center/cover no-repeat;
+                           background:#111 url('https://i.ytimg.com/vi/3rdy0s4Y6M8/hqdefault.jpg') center/cover no-repeat;
                            box-shadow:0 4px 12px rgba(0,0,0,.3);cursor:pointer;
                            position:relative;overflow:hidden">
               <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
                            font-size:48px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8)">▶</span>
             </button>
+            <noscript>
+              <p><a href="https://www.youtube-nocookie.com/embed/3rdy0s4Y6M8" target="_blank" rel="noopener">Watch PokerNow.club Tutorial</a></p>
+            </noscript>
           </div>
 
           <p style="margin-top:8px;"><strong>Best for:</strong> Practicing real poker flow in a controlled environment.</p>
@@ -290,16 +321,18 @@
             <iframe
               src="https://www.youtube-nocookie.com/embed/hmVvdeh_MK4?modestbranding=1&rel=0&playsinline=1"
               title="Zynga Poker — Desktop Setup"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              sandbox="allow-same-origin allow-scripts allow-presentation"
-              referrerpolicy="no-referrer" allowfullscreen></iframe>
+              loading="lazy"
+              allow="autoplay; encrypted-media; picture-in-picture; web-share; fullscreen"
+              referrerpolicy="origin-when-cross-origin"
+              allowfullscreen></iframe>
 
             <iframe
               src="https://www.youtube-nocookie.com/embed/_bmkgIaWTnk?modestbranding=1&rel=0&playsinline=1"
               title="Zynga Poker — Mobile Setup"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              sandbox="allow-same-origin allow-scripts allow-presentation"
-              referrerpolicy="no-referrer" allowfullscreen></iframe>
+              loading="lazy"
+              allow="autoplay; encrypted-media; picture-in-picture; web-share; fullscreen"
+              referrerpolicy="origin-when-cross-origin"
+              allowfullscreen></iframe>
           </div>
 
           <p style="margin-top:12px;"><strong>Pro tips:</strong></p>
@@ -311,7 +344,7 @@
           </ul>
         </div>
       </div>
-    </div>
+    </section>
 
     <div class="highlight-box" style="border-color:var(--color-primary);">
       <p><strong>Next step:</strong> Explore FlopHero Replayer and GTO Reports to connect theory with practice.</p>
@@ -320,9 +353,9 @@
     <div class="divider"></div>
 
     <!-- GLOSSARY -->
-    <div class="content">
+    <section class="content" aria-label="Glossary">
       <div class="info-section">
-        <h3>📘 Quick Glossary</h3>
+        <h3><span aria-hidden="true">📘</span> Quick Glossary</h3>
         <ul>
           <li><strong>Blinds:</strong> Forced bets that start the hand.</li>
           <li><strong>Position:</strong> Acting order. Later = more information.</li>
@@ -335,36 +368,39 @@
           <li><strong>Exploitative:</strong> Deviating to target opponent leaks.</li>
         </ul>
       </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <div class="footer">
+    <footer class="footer">
       <p><strong>FlopHero Poker Onboarding Guide</strong></p>
       <p>Internal Training Resource • October 2025</p>
-    </div>
-  </div>
+    </footer>
+  </main>
 
-  <!-- Lazy-load PokerNow video on click -->
+  <!-- Click-to-load PokerNow video on click; add origin to avoid player config issues -->
   <script>
-    const btn = document.querySelector('#pokernow button');
-    if (btn) {
-      btn.addEventListener('click', (e) => {
+    (function(){
+      const container = document.getElementById('pokernow');
+      const btn = container ? container.querySelector('button') : null;
+      if (!btn) return;
+
+      btn.addEventListener('click', () => {
+        const origin = encodeURIComponent(location.origin);
+        const src = `https://www.youtube-nocookie.com/embed/3rdy0s4Y6M8?autoplay=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1&origin=${origin}`;
+
         const iframe = document.createElement('iframe');
-        iframe.src = 'https://www.youtube-nocookie.com/embed/3rdy0s4Y6M8?autoplay=1&modestbranding=1&rel=0&playsinline=1';
+        iframe.src = src;
         iframe.title = 'PokerNow.club Tutorial';
-        iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
-        iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-presentation');
-        iframe.setAttribute('referrerpolicy', 'no-referrer');
-        iframe.setAttribute('allowfullscreen', '');
-        iframe.style.width = '100%';
-        iframe.style.height = 'auto';
-        iframe.style.aspectRatio = '16/9';
-        iframe.style.border = '0';
-        iframe.style.borderRadius = '12px';
-        iframe.style.boxShadow = '0 4px 12px rgba(0,0,0,.3)';
-        e.currentTarget.replaceWith(iframe);
+        iframe.loading = 'lazy';
+        iframe.referrerPolicy = 'origin-when-cross-origin';
+        iframe.allowFullscreen = true;
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture; web-share; fullscreen';
+        Object.assign(iframe.style, {
+          width:'100%',height:'auto',aspectRatio:'16/9',border:'0',borderRadius:'12px',boxShadow:'0 4px 12px rgba(0,0,0,.3)'
+        });
+        btn.replaceWith(iframe);
       });
-    }
+    })();
   </script>
 </body>
 </html>
