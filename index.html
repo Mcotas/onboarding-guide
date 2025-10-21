@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
   <title>FlopHero Poker Onboarding Guide</title>
 
   <!-- Meta -->
@@ -14,6 +15,15 @@
   <link rel="icon" href="favicon.png" type="image/png">
 
   <style>
+    :root{
+      --color-primary:#EAB308;
+      --color-primary-dark:#CA8A04;
+      --color-success:#10b981;
+      --color-success-dark:#059669;
+      --gradient-primary:linear-gradient(135deg,var(--color-primary) 0%,var(--color-primary-dark) 100%);
+      --gradient-dark:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);
+      --gradient-card:linear-gradient(135deg,#2a2a2a 0%,#3a3a3a 100%);
+    }
     html{scroll-behavior:smooth}
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; line-height:1.6; color:#e5e7eb; background:#0f0f0f}
@@ -24,24 +34,24 @@
     .document{max-width:1100px;margin:0 auto;background:#1a1a1a;box-shadow:0 0 40px rgba(0,0,0,.5)}
     @media (max-width:640px){ .document{ box-shadow:none } }
 
-    .cover{background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 50%,#1a1a1a 100%);color:#fff;padding:48px 20px 72px;position:relative;overflow:hidden}
+    .cover{background:var(--gradient-dark);color:#fff;padding:48px 20px 72px;position:relative;overflow:hidden}
     .cover::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:radial-gradient(circle at 50% 0%,rgba(234,179,8,.15),transparent 70%)}
     .cover-inner{max-width:1100px;margin:0 auto}
     .logo-container{display:flex;align-items:center;gap:16px;margin-bottom:28px;position:relative;z-index:2}
     .logo-img{height:44px;width:auto}
     .cover-content{text-align:center}
-    .cover h1{font-size:40px;font-weight:800;margin-bottom:12px;letter-spacing:-.5px;background:linear-gradient(135deg,#fff 0%,#EAB308 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .cover h1{font-size:40px;font-weight:800;margin-bottom:12px;letter-spacing:-.5px;background:linear-gradient(135deg,#fff 0%,var(--color-primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .cover .subtitle{font-size:18px;opacity:.9;margin-bottom:18px;color:#e5e7eb}
     .cover .meta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}
     .cover .meta .meta-item{
       display:inline-flex;align-items:center;justify-content:center;
-      padding:12px 22px;border-radius:28px;background:linear-gradient(135deg,#2a2a2a 0%,#3a3a3a 100%);
+      padding:12px 22px;border-radius:28px;background:var(--gradient-card);
       border:1px solid #4b4b4b;color:#e5e7eb;font-weight:700;
       box-shadow:0 6px 18px rgba(0,0,0,.35);transition:transform .15s, box-shadow .15s, border-color .15s;
     }
-    .cover .meta .meta-item:hover{transform:translateY(-1px);border-color:#EAB308;box-shadow:0 10px 24px rgba(234,179,8,.18)}
+    .cover .meta .meta-item:hover{transform:translateY(-1px);border-color:var(--color-primary);box-shadow:0 10px 24px rgba(234,179,8,.18)}
 
-    .section-header{background:linear-gradient(135deg,#EAB308 0%,#CA8A04 100%);color:#fff;padding:28px 20px}
+    .section-header{background:var(--gradient-primary);color:#fff;padding:28px 20px}
     .section-header-inner{max-width:1100px;margin:0 auto}
     .section-header h2{font-size:26px;font-weight:700;margin-bottom:8px}
     .section-header p{font-size:15px;opacity:.95}
@@ -50,16 +60,16 @@
     .intro{padding:18px 20px 0;color:#d1d5db;max-width:1100px;margin:0 auto}
 
     /* Cards */
-    .video-card,.practice-card{background:#262626;border:1px solid #404040;border-radius:16px;padding:18px;margin-bottom:18px;box-shadow:0 4px 12px rgba(0,0,0,.3);position:relative}
-    .video-card::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(180deg,#EAB308,#CA8A04);border-radius:16px 0 0 16px;opacity:0;transition:opacity .3s}
-    .video-card:hover{border-color:#EAB308;box-shadow:0 8px 24px rgba(234,179,8,.15);transform:translateY(-2px)}
+    .video-card,.practice-card{background:#262626;border:1px solid #404040;border-radius:16px;padding:18px;margin-bottom:18px;box-shadow:0 4px 12px rgba(0,0,0,.3);position:relative;transition:all .3s}
+    .video-card::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:var(--gradient-primary);border-radius:16px 0 0 16px;opacity:0;transition:opacity .3s}
+    .video-card:hover{border-color:var(--color-primary);box-shadow:0 8px 24px rgba(234,179,8,.15);transform:translateY(-2px)}
     .video-card:hover::before{opacity:1}
-    .video-number{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a1a,#2d2d2d);color:#EAB308;width:36px;height:36px;border-radius:50%;font-weight:700;font-size:16px;margin-bottom:10px}
+    .video-number{display:inline-flex;align-items:center;justify-content:center;background:var(--gradient-dark);color:var(--color-primary);width:36px;height:36px;border-radius:50%;font-weight:700;font-size:16px;margin-bottom:10px}
     .video-card h3,.practice-card h4{font-size:18px;font-weight:700;color:#fff;margin-bottom:10px}
     .video-card p,.practice-card p{color:#d1d5db;font-size:14px;line-height:1.7;margin-bottom:12px}
 
-    .video-link{display:inline-flex;align-items:center;background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;font-size:14px;transition:.2s;box-shadow:0 4px 12px rgba(0,0,0,.15)}
-    .video-link:hover{background:linear-gradient(135deg,#EAB308 0%,#CA8A04 100%);transform:translateY(-1px)}
+    .video-link{display:inline-flex;align-items:center;background:var(--gradient-dark);color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;font-size:14px;transition:.2s;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+    .video-link:hover{background:var(--gradient-primary);transform:translateY(-1px)}
     .video-link::before{content:'▶';margin-right:8px;font-size:11px}
 
     /* Media */
@@ -67,20 +77,20 @@
     iframe{width:100%;height:auto;aspect-ratio:16/9;border:0;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.3)}
     img{max-width:100%;height:auto;border-radius:12px;border:1px solid #404040;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 
-    .info-section{background:linear-gradient(135deg,#2d2d2d 0%,#1f1f1f 100%);border-left:5px solid #EAB308;padding:18px 20px;margin:20px 0;border-radius:0 12px 12px 0}
-    .info-section h3{color:#EAB308;font-size:18px;font-weight:700;margin-bottom:10px}
+    .info-section{background:linear-gradient(135deg,#2d2d2d 0%,#1f1f1f 100%);border-left:5px solid var(--color-primary);padding:18px 20px;margin:20px 0;border-radius:0 12px 12px 0}
+    .info-section h3{color:var(--color-primary);font-size:18px;font-weight:700;margin-bottom:10px}
     .info-section ul{margin:10px 0 0 18px;color:#d1d5db}
     .info-section li{margin:6px 0}
 
-    .practice-section{background:linear-gradient(135deg,#1f2d25 0%,#1a2820 100%);border-left:5px solid #10b981;padding:18px 20px;margin:20px 0;border-radius:0 12px 12px 0}
-    .practice-section h3{color:#10b981;font-size:18px;font-weight:700;margin-bottom:10px}
+    .practice-section{background:linear-gradient(135deg,#1f2d25 0%,#1a2820 100%);border-left:5px solid var(--color-success);padding:18px 20px;margin:20px 0;border-radius:0 12px 12px 0}
+    .practice-section h3{color:var(--color-success);font-size:18px;font-weight:700;margin-bottom:10px}
 
     .image-caption{color:#6b7280;font-size:13px;font-style:italic;margin-top:6px}
     .divider{height:1px;background:linear-gradient(to right,transparent,#404040,transparent);margin:28px 0}
 
-    .footer{background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);color:#9ca3af;padding:22px 20px;text-align:center;font-size:12px}
-    .footer strong{color:#EAB308}
-    .highlight-box{background:linear-gradient(135deg,#2d2415 0%,#1f1a0f 100%);border:2px solid #EAB308;border-radius:12px;padding:16px;margin:18px 0}
+    .footer{background:var(--gradient-dark);color:#9ca3af;padding:22px 20px;text-align:center;font-size:12px}
+    .footer strong{color:var(--color-primary)}
+    .highlight-box{background:linear-gradient(135deg,#2d2415 0%,#1f1a0f 100%);border:2px solid var(--color-primary);border-radius:12px;padding:16px;margin:18px 0}
     .highlight-box p{color:#fbbf24;font-size:14px;margin:0}
 
     /* Mobile tweaks */
@@ -110,9 +120,9 @@
           <h1>Poker Onboarding Guide</h1>
           <p class="subtitle">Complete learning path for FlopHero staff</p>
           <div class="meta">
-            <a class="meta-item" href="#watch">📺 Watch</a>
-            <a class="meta-item" href="#review">🎯 Review</a>
-            <a class="meta-item" href="#practice">🎮 Practice</a>
+            <a class="meta-item" href="#watch" aria-label="Jump to Watch section"><span aria-hidden="true">📺</span> Watch</a>
+            <a class="meta-item" href="#review" aria-label="Jump to Review section"><span aria-hidden="true">🎯</span> Review</a>
+            <a class="meta-item" href="#practice" aria-label="Jump to Practice section"><span aria-hidden="true">🎮</span> Practice</a>
           </div>
         </div>
       </div>
@@ -127,7 +137,7 @@
     <div id="watch" class="section-header">
       <div class="section-header-inner">
         <h2>📺 Poker Tutorials (Watch)</h2>
-        <p>Short, focused content to learn Texas Hold’em fundamentals.</p>
+        <p>Short, focused content to learn Texas Hold'em fundamentals.</p>
       </div>
     </div>
 
@@ -147,7 +157,7 @@
       </div>
 
       <div class="image-container">
-        <img src="poker_hands.png" loading="lazy" alt="Texas Hold'em hand rankings chart" />
+        <img src="poker_hands.png" loading="lazy" width="1200" height="800" alt="Texas Hold'em hand rankings chart from High Card to Royal Flush" />
         <p class="image-caption">Reference: hand rankings from weakest to strongest.</p>
       </div>
 
@@ -166,7 +176,7 @@
       </div>
 
       <div class="image-container">
-        <img src="table_view.png" loading="lazy" alt="Poker table positions diagram" />
+        <img src="table_view.png" loading="lazy" width="1200" height="800" alt="Poker table layout showing player positions: Button, Small Blind, Big Blind, and early/middle/late positions" />
         <p class="image-caption">Reference: table positions and strategic importance.</p>
       </div>
 
@@ -199,7 +209,7 @@
     <div class="divider"></div>
 
     <!-- REVIEW -->
-    <div id="review" class="section-header" style="background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%)">
+    <div id="review" class="section-header" style="background:var(--gradient-dark)">
       <div class="section-header-inner">
         <h2>🎯 Review (Flashcards)</h2>
         <p>Flashcards are short Q&A prompts. They work via active recall and spaced repetition.</p>
@@ -219,7 +229,7 @@
         </p>
 
         <div class="highlight-box">
-          <p><strong>Pro tip:</strong> Mark hard cards as “Again”. The algorithm will resurface them at the right time.</p>
+          <p><strong>Pro tip:</strong> Rate each card's difficulty from 1 to 5 at the end of each question. This adjusts how often it reappears—harder cards come back sooner, easier ones less frequently.</p>
         </div>
 
         <h3 style="margin-top:6px;">Recommended order</h3>
@@ -235,7 +245,7 @@
     <div class="divider"></div>
 
     <!-- PRACTICE -->
-    <div id="practice" class="section-header" style="background:linear-gradient(135deg,#10b981 0%,#059669 100%)">
+    <div id="practice" class="section-header" style="background:linear-gradient(135deg,var(--color-success) 0%,var(--color-success-dark) 100%)">
       <div class="section-header-inner">
         <h2>🎮 Practice (Play)</h2>
         <p>Step-by-step to start playing now.</p>
@@ -250,7 +260,7 @@
           <h4>1) PokerNow.club</h4>
           <p>Private tables in your browser. No install.</p>
           <ol style="margin-left:18px;color:#d1d5db">
-            <li>Open <a href="https://www.pokernow.club" target="_blank" rel="noopener" style="border-bottom:1px solid #10b981">pokernow.club</a>.</li>
+            <li>Open <a href="https://www.pokernow.club" target="_blank" rel="noopener" style="border-bottom:1px solid var(--color-success)">pokernow.club</a>.</li>
             <li>Click <em>Create New Room</em> → set <em>Players</em> and <em>Game</em>.</li>
             <li>Share the table link with the team.</li>
             <li>Use <em>Preferences</em> and <em>Video/Audio</em> if needed.</li>
@@ -258,10 +268,13 @@
 
           <!-- Click-to-load for privacy -->
           <div class="embed" id="pokernow">
-            <button aria-label="Play PokerNow tutorial"
+            <button aria-label="Load PokerNow tutorial video"
                     style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px;
                            background:#111 url('table_view.png') center/cover no-repeat;
-                           box-shadow:0 4px 12px rgba(0,0,0,.3);cursor:pointer">
+                           box-shadow:0 4px 12px rgba(0,0,0,.3);cursor:pointer;
+                           position:relative;overflow:hidden">
+              <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                           font-size:48px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8)">▶</span>
             </button>
           </div>
 
@@ -271,10 +284,7 @@
         <div class="practice-card">
           <h4>2) Zynga Poker</h4>
           <p>Fast practice against many player types. Create a Zynga account or sign in with Apple/Google/Facebook.</p>
-          <ul style="margin-left:18px;color:#d1d5db">
-            <li><strong>Desktop:</strong> Install from Microsoft Store or play via web. Finish the tutorial, then join basic Hold’em tables.</li>
-            <li><strong>Mobile:</strong> Install the iOS/Android app. Log in and play “Casual” tables.</li>
-          </ul>
+          <p style="margin-top:8px;"><strong>Below are tutorials for installing and starting to play on desktop or mobile.</strong></p>
 
           <div class="embed" style="display:grid;gap:10px">
             <iframe
@@ -292,12 +302,18 @@
               referrerpolicy="no-referrer" allowfullscreen></iframe>
           </div>
 
-          <p style="margin-top:8px;"><strong>Tip:</strong> Focus on fundamentals. Play-money results are irrelevant.</p>
+          <p style="margin-top:12px;"><strong>Pro tips:</strong></p>
+          <ul style="margin-left:18px;color:#d1d5db;margin-top:6px">
+            <li>Ignore advertisements and focus on <strong>Hold'em tables</strong>.</li>
+            <li>Try to join tables with <strong>100 big blinds</strong> for proper practice.</li>
+            <li>Once you reach <strong>Level 10</strong>, experiment with Omaha.</li>
+            <li>Remember: play-money results are irrelevant—focus on fundamentals.</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="highlight-box" style="border-color:#EAB308;">
+    <div class="highlight-box" style="border-color:var(--color-primary);">
       <p><strong>Next step:</strong> Explore FlopHero Replayer and GTO Reports to connect theory with practice.</p>
     </div>
 
@@ -331,12 +347,22 @@
   <!-- Lazy-load PokerNow video on click -->
   <script>
     const btn = document.querySelector('#pokernow button');
-    if (btn){
-      btn.addEventListener('click', (e)=>{
-        e.currentTarget.outerHTML =
-          '<iframe src="https://www.youtube-nocookie.com/embed/3rdy0s4Y6M8?autoplay=1&modestbranding=1&rel=0&playsinline=1" '+
-          'title="PokerNow.club Tutorial" allow="autoplay; encrypted-media; picture-in-picture" '+
-          'sandbox="allow-same-origin allow-scripts allow-presentation" referrerpolicy="no-referrer" allowfullscreen></iframe>';
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/3rdy0s4Y6M8?autoplay=1&modestbranding=1&rel=0&playsinline=1';
+        iframe.title = 'PokerNow.club Tutorial';
+        iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+        iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-presentation');
+        iframe.setAttribute('referrerpolicy', 'no-referrer');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.style.width = '100%';
+        iframe.style.height = 'auto';
+        iframe.style.aspectRatio = '16/9';
+        iframe.style.border = '0';
+        iframe.style.borderRadius = '12px';
+        iframe.style.boxShadow = '0 4px 12px rgba(0,0,0,.3)';
+        e.currentTarget.replaceWith(iframe);
       });
     }
   </script>
