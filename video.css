@@ -10,6 +10,8 @@
 .video-embed {
     display: block;
     width: 100%;
+    position: relative;
+    z-index: 50; /* Base z-index para o container do vídeo */
 }
 
 .video-preview-container {
@@ -89,6 +91,7 @@
     top: 0;
     left: 0;
     background: #000; /* Fundo preto enquanto o vídeo carrega */
+    z-index: 100; /* Garantir que o vídeo apareça por cima de outros conteúdos quando injetado */
 }
 
 /* PokerNow specific button style - serve como referência para outros vídeos */

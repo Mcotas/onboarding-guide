@@ -221,6 +221,8 @@ header.cover::after {
     align-items: center;
     gap: 12px;
     margin: 18px 0 28px 0;
+    position: relative;
+    z-index: 1000; /* Aumentar para ficar acima das seções */
 }
 
 /* Subtle pill-style announcements button (centered, non-dominant) */
@@ -254,19 +256,19 @@ header.cover::after {
 /* Section Header */
 .section-header {
     background: linear-gradient(135deg, 
-        rgba(210,160,0,0.98) 0%, 
-        rgba(160,120,0,0.98) 100%
+        rgba(255, 204, 0, 0.95) 0%, 
+        rgba(230, 180, 0, 0.95) 100%
     );
     color: #000000;
     padding: 24px 40px;
     margin: 0 40px;
     position: relative;
     border-radius: 16px;
-    /* stronger subtle drop shadow for separation from dark background */
-    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    /* subtle glow shadow */
+    box-shadow: 0 8px 24px rgba(255, 204, 0, 0.15);
     backdrop-filter: blur(6px);
-    /* Ensure section header sits above background decorations */
-    z-index: 5;
+    /* Baixar o z-index para que os modais fiquem por cima */
+    z-index: 1;
 }
 
 .section-header::before {
@@ -292,18 +294,19 @@ header.cover::after {
     align-items: center;
     gap: 8px;
     position: relative;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    /* use a dark color on bright gold for best contrast */
-    color: #0b0b0b; /* near-black */
+    text-shadow: none;
+    /* Dark text on gold, matching site's color scheme */
+    color: #0a0a0a;
     z-index: 6; /* above the section pseudo-element */
 }
 
 .section-header p {
     font-size: 15px;
     margin: 0;
-    opacity: 0.95;
-    color: rgba(10,10,10,0.9);
+    opacity: 0.85;
+    color: #0a0a0a;
     position: relative;
+    text-shadow: none;
     z-index: 6;
 }
 

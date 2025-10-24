@@ -42,7 +42,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 99999;
+    z-index: 999999; /* Maior z-index para garantir que fique sobre tudo */
     padding: 40px;
     box-sizing: border-box;
     overflow: hidden;
@@ -79,7 +79,7 @@
     transform: translateY(20px);
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    z-index: 100000;
+    z-index: 1000000; /* Ainda maior que o backdrop para sempre ficar por cima */
 }
 
 /* Make modal content scrollable on small screens so long modals can be closed */
