@@ -45,6 +45,11 @@
     transform: scale(1.05);
 }
 
+.video-preview-container:focus {
+    outline: 3px solid rgba(255,204,0,0.18);
+    outline-offset: 4px;
+}
+
 .video-play-button {
     position: absolute;
     top: 50%;
@@ -134,5 +139,5 @@
 }
 
 @media (max-width:640px) {
-    .video-toggle { width: 100%; text-align: center; }
+    .video-toggle { width: 100%; text-align: center; font-size: 15px; padding: 12px 16px; }
 }

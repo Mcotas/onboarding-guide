@@ -103,8 +103,6 @@ header.cover {
     border: 1px solid rgba(255,255,255,0.12);
     z-index: 2;
 }
-}
-
 header.cover::before {
     content: '';
     position: absolute;
@@ -256,16 +254,19 @@ header.cover::after {
 /* Section Header */
 .section-header {
     background: linear-gradient(135deg, 
-        rgba(255,204,0,0.95) 0%, 
-        rgba(204,163,0,0.95) 100%
+        rgba(210,160,0,0.98) 0%, 
+        rgba(160,120,0,0.98) 100%
     );
     color: #000000;
     padding: 24px 40px;
     margin: 0 40px;
     position: relative;
     border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(255,204,0,0.15);
-    backdrop-filter: blur(8px);
+    /* stronger subtle drop shadow for separation from dark background */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    backdrop-filter: blur(6px);
+    /* Ensure section header sits above background decorations */
+    z-index: 5;
 }
 
 .section-header::before {
@@ -277,9 +278,10 @@ header.cover::after {
         rgba(255,204,0,0.2) 100%
     );
     border-radius: 16px;
-    z-index: 0;
+    /* keep the decorative layer below content but subtle */
+    z-index: 1;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.12;
 }
 
 .section-header h2 {
@@ -291,14 +293,18 @@ header.cover::after {
     gap: 8px;
     position: relative;
     text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* use a dark color on bright gold for best contrast */
+    color: #0b0b0b; /* near-black */
+    z-index: 6; /* above the section pseudo-element */
 }
 
 .section-header p {
     font-size: 15px;
     margin: 0;
-    opacity: 0.85;
-    color: #000000;
+    opacity: 0.95;
+    color: rgba(10,10,10,0.9);
     position: relative;
+    z-index: 6;
 }
 
 /* Cards (Video and Practice) */
@@ -652,4 +658,45 @@ em {
         font-size: 22px;
     }
 }
+
+/* Strong mobile layout override: use full-width containers and larger touch targets */
+@media (max-width: 640px) {
+    html, body {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+    .document {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+    /* Make the content and header take the full horizontal space */
+    .content, header.cover, footer.footer, .section-header {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-left: 18px;
+        padding-right: 18px;
+        border-radius: 10px;
+    }
+    /* Increase readable sizes */
+    .cover h1 { font-size: 32px; }
+    .video-card h3 { font-size: 20px; }
+    .video-card p { font-size: 15px; }
+    /* Reduce card inset spacing so cards can expand horizontally */
+    .video-card { padding: 18px; margin: 12px 0; border-radius: 12px; }
+    .divider { margin: 20px 0; }
+    /* Ensure embeds expand to container width */
+    .video-card .embed.video-embed { max-width: 100% !important; width: 100% !important; margin: 12px 0 0 0 !important; }
+    .video-preview-container { border-radius: 12px; }
+    /* Meta buttons stack and enlarge for touch */
+    .cover .meta { gap: 10px; }
+    .cover .meta .meta-item { padding: 12px 18px; font-size: 16px; }
+}
+
+
 

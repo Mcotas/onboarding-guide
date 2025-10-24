@@ -524,10 +524,15 @@
       }, 300);
     }
 
-    // Close modal when clicking outside
+    // Close modal when clicking outside (modal or backdrop)
     document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('modal')) {
-        closeModal(e.target.id);
+      const t = e.target;
+      if (t.classList.contains('modal')) {
+        closeModal(t.id);
+      } else if (t.classList.contains('modal-backdrop')) {
+        // find closest modal container
+        const modal = t.closest('.modal');
+        if (modal) closeModal(modal.id);
       }
     });
 
