@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlopHero Poker Onboarding Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+        
+        .document {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 40px rgba(0,0,0,0.08);
+        }
+        
+        .cover {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            color: white;
+            padding: 80px 60px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: radial-gradient(circle at 50% 0%, rgba(234, 179, 8, 0.15), transparent 70%);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .logo-text {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-flop {
+            color: #ffffff;
+        }
+        
+        .logo-hero {
+            color: #EAB308;
+        }
+        
+        .cover-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .cover h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 0%, #EAB308 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cover .subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: #e5e7eb;
+        }
+        
+        .cover .meta {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #EAB308 0%, #CA8A04 100%);
+            color: white;
+            padding: 40px 60px;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: radial-gradient(circle at 100% 50%, rgba(255,255,255,0.1), transparent 70%);
+        }
+        
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-header p {
+            font-size: 16px;
+            opacity: 0.95;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content {
+            padding: 50px 60px;
+        }
+        
+        .video-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .video-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #EAB308, #CA8A04);
+            border-radius: 16px 0 0 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-card:hover {
+            border-color: #EAB308;
+            box-shadow: 0 8px 24px rgba(234, 179, 8, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .video-card:hover::before {
+            opacity: 1;
+        }
+        
+        .video-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #EAB308;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .video-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        
+        .video-card p {
+            color: #4b5563;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+        
+        .video-link {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .video-link:hover {
+            background: linear-gradient(135deg, #EAB308 0%, #CA8A04 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(234, 179, 8, 0.3);
+        }
+        
+        .video-link::before {
+            content: '▶';
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        
+        .info-section {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border-left: 5px solid #EAB308;
+            padding: 30px 35px;
+            margin: 40px 0;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 2px 8px rgba(234, 179, 8, 0.1);
+        }
+        
+        .info-section h3 {
+            color: #92400e;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        
+        .info-section p {
+            color: #78350f;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        
+        .info-section ul {
+            margin: 18px 0 0 25px;
+            color: #78350f;
+        }
+        
+        .info-section li {
+            margin: 10px 0;
+            line-height: 1.7;
+        }
+        
+        .info-section a {
+            color: #92400e;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #EAB308;
+            transition: all 0.3s ease;
+        }
+        
+        .info-section a:hover {
+            color: #EAB308;
+            border-bottom-color: #92400e;
+        }
+        
+        .practice-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 5px solid #10b981;
+            padding: 30px 35px;
+            margin: 40px 0;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+        }
+        
+        .practice-section h3 {
+            color: #065f46;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .practice-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 18px 0;
+            border: 1px solid #d1fae5;
+            box-shadow: 0 2px 6px rgba(16, 185, 129, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .practice-card:hover {
+            border-color: #10b981;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+        }
+        
+        .practice-card h4 {
+            color: #047857;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .practice-card p {
+            color: #065f46;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        
+        .image-container {
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border: 2px dashed #d1d5db;
+            border-radius: 12px;
+            padding: 60px 40px;
+            margin: 25px 0;
+        }
+        
+        .image-placeholder p {
+            color: #6b7280;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .image-caption {
+            color: #6b7280;
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 12px;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e5e7eb, transparent);
+            margin: 50px 0;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #9ca3af;
+            padding: 40px 60px;
+            text-align: center;
+            font-size: 13px;
+        }
+        
+        .footer strong {
+            color: #EAB308;
+            font-weight: 600;
+        }
+        
+        .footer p {
+            margin: 8px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #EAB308;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(234, 179, 8, 0.15);
+        }
+        
+        .highlight-box p {
+            color: #92400e;
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        .highlight-box strong {
+            color: #78350f;
+            font-weight: 700;
+        }
+        
+        @media print {
+            .document {
+                box-shadow: none;
+            }
+            body {
+                background: white;
+            }
+            .video-card {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        
+        <!-- Cover Page -->
+        <div class="cover">
+            <div class="logo-container">
+                <svg class="logo-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0 L60 0 L60 30 L30 60 L60 60 L60 120 L0 120 L0 90 L30 60 L0 60 Z" fill="#EAB308"/>
+                    <path d="M60 0 L120 0 L120 60 L90 60 L60 90 L60 30 Z" fill="#EAB308"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-flop">Flop</span><span class="logo-hero">Hero</span>
+                </div>
+            </div>
+            <div class="cover-content">
+                <h1>Poker Onboarding Guide</h1>
+                <p class="subtitle">Complete Learning Path for FlopHero Staff</p>
+                <div class="meta">
+                    <span class="meta-item">📺 Watch</span>
+                    <span class="meta-item">🎯 Review</span>
+                    <span class="meta-item">🎮 Practice</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tutorials Section -->
+        <div class="section-header">
+            <h2>📺 Poker Tutorials (Watch)</h2>
+            <p>YouTube playlist (~1 hour) explaining rules, hand rankings, betting and actions, core poker terms and positions, basic math and GTO principles, and a short introduction to Omaha (PLO).</p>
+        </div>
+        
+        <div class="content">
+            
+            <!-- Video 1 -->
+            <div class="video-card">
+                <div class="video-number">1</div>
+                <h3>How to Play Poker for Beginners | PokerStars Learn</h3>
+                <p>This video introduces the foundations of Texas Hold'em in a clear and structured way. It explains how each hand is played from start to finish — dealing two hole cards, posting blinds, and playing through the four betting rounds: preflop, flop, turn, and river. You'll also learn the main player actions (fold, call, raise) and how to win either by showing the best five-card hand or by making opponents fold. It's the perfect first step for anyone new to poker.</p>
+                <a href="https://www.youtube.com/watch?v=pSRGErzzIo4&list=PLvZlja2OPoK--JWzeKF4MJfu1K5xoIZp9&index=1" class="video-link" target="_blank">Watch on YouTube</a>
+            </div>
+            
+            <!-- Video 2 -->
+            <div class="video-card">
+                <div class="video-number">2</div>
+                <h3>Poker Hands: A list and explanation of the rankings | PokerStars Learn</h3>
+                <p>Here you'll learn how poker hands are ranked from weakest to strongest, starting with High Card and ending with the Royal Flush. The video shows clear examples of each hand and explains how ties are broken using "kickers." Understanding these rankings is essential — every decision in poker depends on knowing which hands beat which.</p>
+                <a href="https://www.youtube.com/watch?v=n-MG0gzXwis&list=PLvZlja2OPoK--JWzeKF4MJfu1K5xoIZp9&index=2" class="video-link" target="_blank">Watch on YouTube</a>
+            </div>
+            
+            <div class="image-container">
+                <div class="image-placeholder">
+                    <p>📊 Texas Hold'em Hand Rankings Chart</p>
+                </div>
+                <p class="image-caption">Reference: Texas Hold'em hand rankings from weakest to strongest</p>
+            </div>
+            
+            <!-- Video 3 -->
+            <div class="video-card">
+                <div class="video-number">3</div>
+                <h3>How To Bet In Poker | PokerStars Learn</h3>
+                <p>This lesson covers the structure of betting in Texas Hold'em and how chips move around the table. You'll see examples of blinds, raises, calls, and folds across all betting rounds. It also explains why acting later in a hand gives a strategic advantage. After watching, you'll understand the rhythm of betting and how each decision changes the pot size and your overall plan.</p>
+                <a href="https://www.youtube.com/watch?v=ibkt_SLQe4E&list=PLvZlja2OPoK--JWzeKF4MJfu1K5xoIZp9&index=4" class="video-link" target="_blank">Watch on YouTube</a>
+            </div>
+            
+            <!-- Video 4 -->
+            <div class="video-card">
+                <div class="video-number">4</div>
+                <h3>Essential Poker Terms You Need To Know Before Playing | PokerStars Learn</h3>
+                <p>Before playing, it's important to know the language of poker. This short video defines key terms such as blinds, position, pot, stack, showdown, and more. Learning these terms first helps you follow all the other tutorials easily and communicate clearly at the table — both online and live.</p>
+                <a href="https://www.youtube.com/watch?v=iN4_p4WndxI&list=PLvZlja2OPoK--JWzeKF4MJfu1K5xoIZp9&index=6" class="video-link" target="_blank">Watch on YouTube</a>
+            </div>
+            
+            <div class="image-container">
+                <div class="image-placeholder">
+                    <p>🎲 Poker Table Positions Diagram</p>
+                </div>
+                <p class="image-caption">Reference: Table positions and their strategic importance</p>
+            </div>
+            
+            <!-- Video 5 -->
+            <div class="video-card">
+                <div class="video-number">5</div>
+                <h3>How To Calculate EV: Pot Odds & Equity</h3>
+                <p>This tutorial introduces the basic math behind poker decisions. It explains pot odds (the ratio of the pot to the cost of a call), "outs" (cards that improve your hand), and equity (your chance of winning the pot). You'll learn simple shortcuts like the "Rule of 2 and 4" to estimate probabilities during a hand. These ideas help you recognize when a call is profitable and when it's better to fold.</p>
+                <a href="https://www.youtube.com/watch?v=PmHc40VgWAc" class="video-link" target="_blank">Watch on YouTube</a>
+            </div>
+            
+            <!-- Video 6 -->
+            <div class="video-card">
+                <div class="video-number">6</div>
+                <h3>The Fundamentals of GTO Poker</h3>
+                <p>Game Theory Optimal (GTO) is a modern approach focused on balanced, unexploitable play. This video explains how GTO strategies work, why they're valuable, and how they differ from exploitative play. It also connects these ideas to tools like FlopHero's GTO Reports and Replayer, helping you understand the logic behind optimal decision-making.</p>
+                <a href="https://www.youtube.com/watch?v=WQJBmH2KG84&t=3s" class="video-link" target="_blank">Watch on YouTube</a>
+            </div>
+            
+            <!-- Video 7 -->
+            <div class="video-card">
+                <div class="video-number">7</div>
+                <h3>How to Play Poker – Omaha Guide | PokerStars Learn</h3>
+                <p>This short video introduces Pot-Limit Omaha (PLO), another major poker variant. It explains the key difference from Texas Hold'em: each player receives four hole cards and must use exactly two with three community cards. You'll see why Omaha tends to create bigger pots and stronger hands while still following the same core concepts you learned in Hold'em.</p>
+                <a href="https://www.youtube.com/watch?v=ouAa2a-ZO9s&list=PLvZlja2OPoK--JWzeKF4MJfu1K5xoIZp9&index=13" class="video-link" target="_blank">Watch on YouTube</a>
+            </div>
+            
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- Review Section -->
+        <div class="section-header" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);">
+            <h2>🎯 Review (Flashcards)</h2>
+            <p>Study with our interactive flashcards to reinforce learning</p>
+        </div>
+        
+        <div class="content">
+            
+            <div class="info-section">
+                <h3>Interactive Flashcard System</h3>
+                <p>Access the complete flashcard deck at:</p>
+                <p style="margin: 18px 0;"><strong>🔗 <a href="https://www.brainscape.com/p/6ZPML-LH-DWNRR" target="_blank">https://www.brainscape.com/p/6ZPML-LH-DWNRR</a></strong></p>
+                
+                <div class="highlight-box">
+                    <p><strong>💡 Pro Tip:</strong> Create a free Brainscape account to track your progress and study with spaced repetition. This learning method helps you remember concepts long-term by reviewing them at optimal intervals.</p>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Recommended Study Order:</h3>
+                <ul>
+                    <li><strong>Poker Basics</strong> — Foundation concepts and terminology</li>
+                    <li><strong>Intermediate Concepts</strong> — Strategy and decision-making</li>
+                    <li><strong>FlopHero Product</strong> — Platform features and tools</li>
+                    <li><strong>Omaha (PLO) & Variants</strong> — Advanced game types</li>
+                </ul>
+                
+                <p style="margin-top: 25px; font-size: 14px; font-style: italic;">Accessible on desktop and mobile — progress syncs automatically across all your devices.</p>
+            </div>
+            
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- Practice Section -->
+        <div class="section-header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <h2>🎮 Practice (Play)</h2>
+            <p>Use free apps and platforms available in India to practice what you've learned</p>
+        </div>
+        
+        <div class="content">
+            
+            <div class="practice-section">
+                <h3>Free Practice Platforms</h3>
+                
+                <div class="practice-card">
+                    <h4>1. PokerNow.club</h4>
+                    <p>Play private games with teammates directly in your browser — no installation required. Create a table, share the link, and experience real poker flow (blinds, betting rounds, positions).</p>
+                    <p style="margin-top: 12px;"><strong>Best for:</strong> Understanding game mechanics and practicing with colleagues in a controlled environment.</p>
+                </div>
+                
+                <div class="practice-card">
+                    <h4>2. Zynga Poker (Android / iOS)</h4>
+                    <p>Practice against global players in a simple, fast-paced app. Good for learning the rhythm of betting and hand strength, even though chips have no real value.</p>
+                    <p style="margin-top: 12px;"><strong>Best for:</strong> Getting comfortable with betting patterns and building table awareness in a low-pressure setting.</p>
+                </div>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); border-color: #10b981;">
+                    <p style="color: #065f46;"><strong>💚 Learning Tip:</strong> Start with PokerNow.club to play with familiar faces, then move to Zynga Poker to test your skills against a wider range of playing styles. The goal isn't to win play money, but to build comfort with poker fundamentals.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>FlopHero Poker Onboarding Guide</strong></p>
+            <p>Internal Training Resource • October 2025</p>
+            <p style="margin-top: 20px;">Questions? Contact the Learning & Development team</p>
+        </div>
+        
+    </div>
+</body>
+</html>
