@@ -57,7 +57,7 @@
     background-color: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    pointer-events: none;
+    pointer-events: auto; /* allow clicks on backdrop to close modal */
 }
 
 .modal.active {
@@ -80,6 +80,17 @@
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
     z-index: 100000;
+}
+
+/* Make modal content scrollable on small screens so long modals can be closed */
+.modal-content {
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+@media (max-width: 640px) {
+    .modal { padding: 12px; }
+    .modal-content { padding: 20px; border-radius: 12px; max-width: 100%; }
 }
 
 .modal.active .modal-content {
