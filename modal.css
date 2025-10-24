@@ -1,0 +1,236 @@
+.reference-buttons {
+    display: flex;
+    gap: 32px;
+    margin: 48px 0 24px;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+}
+
+.reference-button {
+    padding: 16px 32px;
+    background: #ffcc00;
+    border: none;
+    border-radius: 12px;
+    color: #0a0a0a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-shadow: 0 4px 16px rgba(255,204,0,0.15);
+}
+
+.reference-button:hover {
+    background-color: rgba(255, 204, 0, 0.8);
+    transform: translateY(-2px);
+}
+
+.reference-button:hover {
+    background-color: #2a2a2a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.15);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    pointer-events: none;
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background: rgb(20,20,20);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 100000;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Announcements Modal Styles */
+#announcements-modal .modal-content {
+    max-width: 700px;
+    background: rgb(20,20,20);
+    color: #ffffff;
+    position: relative;
+    z-index: 10001;
+}
+
+#announcements-modal .modal-content::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,204,0,0.3), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+#announcements-modal h3 {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #ffcc00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+#announcements-modal h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffcc00;
+    margin: 24px 0 12px;
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+    text-align: left;
+}
+
+#announcements-modal h4:first-of-type {
+    margin-top: 0;
+}
+
+#announcements-modal .steps-list + h4 {
+    margin-top: 24px;
+}
+
+#announcements-modal p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin: 4px 0;
+    text-align: left;
+}
+
+#announcements-modal strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+#announcements-modal .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0;
+    list-style: none;
+    padding: 0;
+}
+
+#announcements-modal .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    line-height: 1.5;
+    margin-bottom: 4px;
+    text-align: left;
+}
+
+#announcements-modal .step-item strong {
+    white-space: nowrap;
+    color: #ffcc00;
+    width: auto;
+    margin-right: 8px;
+}
+
+#announcements-modal .step-item span {
+    color: #cccccc;
+    flex: 1;
+    text-align: left;
+}
+
+#announcements-modal label {
+    color: #cccccc;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 24px;
+}
+
+#announcements-modal input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #ffcc00;
+    cursor: pointer;
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cccccc;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: #ffffff;
+    transform: scale(1.05);
+}

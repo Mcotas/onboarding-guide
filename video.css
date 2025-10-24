@@ -1,0 +1,105 @@
+/* Video container styles */
+.embed {
+    margin-top: 16px;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-embed {
+    display: block;
+    width: 100%;
+}
+
+.video-preview-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    background: linear-gradient(135deg, #111111 0%, #0a0a0a 100%);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-preview-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(255,204,0,0.1);
+    border-color: rgba(255,204,0,0.3);
+}
+
+.video-preview-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.video-preview-container:hover img {
+    transform: scale(1.05);
+}
+
+.video-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    background: rgba(255,204,0,0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.video-preview-container:hover .video-play-button {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: #ffcc00;
+    box-shadow: 0 6px 24px rgba(255,204,0,0.3);
+}
+
+.video-play-button::before {
+    content: '▶';
+    margin-left: 4px; /* Ajuste visual para centralizar o triângulo */
+}
+
+.video-iframe-injected {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+    border-radius: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000; /* Fundo preto enquanto o vídeo carrega */
+}
+
+/* PokerNow specific button style - serve como referência para outros vídeos */
+#pokernow button {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 0;
+    border-radius: 12px;
+    background-color: #111;
+    box-shadow: 0 4px 12px rgba(0,0,0,.3);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Consistência para vídeos na seção Zynga */
+.video-card .embed + .embed {
+    margin-top: 24px;
+}
